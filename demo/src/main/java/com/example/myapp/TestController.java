@@ -24,6 +24,23 @@ public class TestController {
 		System.out.println("로그인");
 		return false;
 	}
+	@PostMapping("/login/redux")
+	public Map<String, String> chkchk (HttpServletRequest request) {
+		// 요청을 보낸 클라이언트의 IP주소를 반환합니다.
+		Map<String, String> map = new TreeMap<>();
+		String tempId = "user";
+		String tempPw = "user";
+		if (tempId.equals(request.getParameter("id")) &&
+			tempPw.equals(request.getParameter("pw"))) {
+			map.put("id", "user");
+			map.put("nickname", "박감자");
+			return map;
+		}
+		System.out.println("리덕스 로그인");
+		map.put("id", "");
+		map.put("nickname", "");
+		return map;
+	}
 	
 	@PostMapping("/adList")
 	public Map<String, String> adList () {
